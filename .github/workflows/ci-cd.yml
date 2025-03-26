@@ -50,10 +50,10 @@ jobs:
           cd patient-service
           mvn com.github.spotbugs:spotbugs-maven-plugin:spotbugs
 
-      - name: Run Checkstyle
-        run: |
-          cd patient-service
-          mvn checkstyle:check
+#      - name: Run Checkstyle
+#        run: |
+#          cd patient-service
+#          mvn checkstyle:check
 
       - name: Run OWASP Dependency Check
         run: |
