@@ -30,14 +30,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Navigate to patient-service directory
-        run: cd patient-service
-
       - name: Build with Maven
-        run: mvn clean install
+        run: |
+          cd patient-service
+          mvn clean install
 
       - name: Run tests
-        run: mvn test
+        run: |
+          cd patient-service
+          mvn test
 
       - name: Package application
-        run: mvn package
+        run: |
+          cd patient-service
+          mvn package
