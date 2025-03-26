@@ -36,4 +36,16 @@ public class PatientController {
         PatientResponseDTO savedPatient = patientService.createPatient(patient);
         return ResponseEntity.ok().body(savedPatient);
     }
+
+    @PutMapping("/patients/{id}")
+    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable String id, @RequestBody PatientRequestDTO patientRequestDTO ) {
+        PatientResponseDTO updatedPatient = patientService.updatePatient(id, patientRequestDTO);
+        return ResponseEntity.ok().body(updatedPatient);
+    }
+
+    @DeleteMapping("/patients/{id}")
+    public ResponseEntity<String> deletePatient(@PathVariable String id) {
+        patientService.deletePatient(id);
+        return ResponseEntity.ok().body("Patient deleted successfully");
+    }
 }
