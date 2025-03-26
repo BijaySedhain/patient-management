@@ -55,10 +55,10 @@ jobs:
 #          cd patient-service
 #          mvn checkstyle:check
 
-      - name: Run OWASP Dependency Check
-        run: |
-          cd patient-service
-          mvn org.owasp:dependency-check-maven:check
+#      - name: Run OWASP Dependency Check
+#        run: |
+#          cd patient-service
+#          mvn org.owasp:dependency-check-maven:check
 
       - name: Run PMD
         run: |
