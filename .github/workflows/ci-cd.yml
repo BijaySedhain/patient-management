@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - '*'
   pull_request:
     branches:
-      - main
+      - "*"
 
 jobs:
   build:
@@ -50,15 +50,15 @@ jobs:
           cd patient-service
           mvn com.github.spotbugs:spotbugs-maven-plugin:spotbugs
 
-      - name: Log in to Docker Hub
-        run: echo "-e4s@4TB*U3j(Pu" | docker login -u "bijaysedhain" --password-stdin
-
-      - name: Build Docker image
-        run: |
-          cd patient-service
-          docker build -t patient-service:latest -f Dockerfile .
-
-      - name: Push Docker image
-        run: |
-          docker tag patient-service:latest bijaysedhain/patient-service:latest
-          docker push bijaysedhain/patient-service:latest
+#      - name: Log in to Docker Hub
+#        run: echo "-e4s@4TB*U3j(Pu" | docker login -u "bijaysedhain" --password-stdin
+#
+#      - name: Build Docker image
+#        run: |
+#          cd patient-service
+#          docker build -t patient-service:latest -f Dockerfile .
+#
+#      - name: Push Docker image
+#        run: |
+#          docker tag patient-service:latest bijaysedhain/patient-service:latest
+#          docker push bijaysedhain/patient-service:latest
