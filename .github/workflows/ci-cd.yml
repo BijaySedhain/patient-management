@@ -62,4 +62,3 @@ jobs:
         run: |
           docker tag patient-service:latest ${{ secrets.DOCKER_USERNAME }}/patient-service:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/patient-service:latest
-
