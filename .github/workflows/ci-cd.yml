@@ -56,7 +56,7 @@ jobs:
       - name: Build Docker image
         run: |
           cd patient-service
-          docker build -t patient-service:latest .
+          docker build -t patient-service:latest -f Dockerfile .
 
       - name: Push Docker image
         run: |
