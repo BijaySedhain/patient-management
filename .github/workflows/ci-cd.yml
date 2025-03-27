@@ -50,20 +50,8 @@ jobs:
           cd patient-service
           mvn com.github.spotbugs:spotbugs-maven-plugin:spotbugs
 
-      - name: Check DOCKER_USERNAME length
-        run: |
-          echo "DOCKER_USERNAME length: ${#DOCKER_USERNAME}"
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-
-      - name: Check DOCKER_PASSWORD length
-        run: |
-          echo "DOCKER_PASSWORD length: ${#DOCKER_PASSWORD}"
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "-e4s@4TB*U3j(Pu" | docker login -u "bijaysedhain" --password-stdin
 
       - name: Build Docker image
         run: |
@@ -72,5 +60,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker tag patient-service:latest ${{ secrets.DOCKER_USERNAME }}/patient-service:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/patient-service:latest
+          docker tag patient-service:latest bijaysedhain/patient-service:latest
+          docker push bijaysedhain/patient-service:latest
