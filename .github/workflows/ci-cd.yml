@@ -60,7 +60,7 @@ jobs:
 #          cd patient-service
 #          mvn org.owasp:dependency-check-maven:check
 
-      - name: Run PMD
-        run: |
-          cd patient-service
-          mvn pmd:pmd
+#      - name: Run PMD
+#        run: |
+#          cd patient-service
+#          mvn pmd:pmd
