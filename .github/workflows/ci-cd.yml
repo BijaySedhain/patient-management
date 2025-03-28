@@ -51,7 +51,7 @@ jobs:
           mvn com.github.spotbugs:spotbugs-maven-plugin:spotbugs
 
       - name: Log in to Docker Hub
-        run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
       - name: Build Docker image
         run: |
