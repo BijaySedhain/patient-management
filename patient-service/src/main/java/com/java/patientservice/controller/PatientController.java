@@ -2,7 +2,6 @@ package com.java.patientservice.controller;
 
 import com.java.patientservice.DTO.PatientRequestDTO;
 import com.java.patientservice.DTO.PatientResponseDTO;
-import com.java.patientservice.model.Patient;
 import com.java.patientservice.service.PatientService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
 package com.java.patientservice.DTO;
 
+import com.java.patientservice.validator.ValidDate;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,8 +24,10 @@ public class PatientRequestDTO {
     private String address;
 
     @NotBlank(message = "Date of birth is required")
+    @ValidDate
     private String dateOfBirth;
 
     @NotBlank(message = "Registered date is required")
+    @ValidDate
     private String registeredDate;
 }
