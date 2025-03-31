@@ -3,6 +3,7 @@ package com.java.patientservice.service;
 import com.java.patientservice.DTO.PatientRequestDTO;
 import com.java.patientservice.DTO.PatientResponseDTO;
 import com.java.patientservice.exception.EmailAlreadyExistsException;
+import com.java.patientservice.exception.PatientNotFoundException;
 import com.java.patientservice.mapper.PatientMapper;
 import com.java.patientservice.model.Patient;
 import com.java.patientservice.repository.PatientRepository;
@@ -45,10 +46,11 @@ public class PatientService {
         return PatientMapper.toPatientResponseDTO(savedPatient);
     }
 
-    public PatientResponseDTO updatePatient(String id, PatientRequestDTO patientRequestDTO) {
+    public PatientResponseDTO updatePatient(String id,
+                                            PatientRequestDTO patientRequestDTO) {
         getPatientById(id);
         Patient patient = patientRepository.findById(UUID.fromString(id))
-                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found with id: " + id));
         patient.setName(patientRequestDTO.getName());
         patient.setEmail(patientRequestDTO.getEmail());
         patient.setAddress(patientRequestDTO.getAddress());
