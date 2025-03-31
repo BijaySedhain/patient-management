@@ -36,7 +36,7 @@ public class PatientService {
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
 
         if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
-            throw new EmailAlreadyExistsException("Email already exists "+patientRequestDTO.getEmail());
+            throw new EmailAlreadyExistsException("Patient with this email "+patientRequestDTO.getEmail() + " already exists");
         }
 //        var checkEmailAddress = patientRepository.findByEmail(patientRequestDTO.getEmail());
 //        if (checkEmailAddress != null) {
@@ -48,13 +48,19 @@ public class PatientService {
 
     public PatientResponseDTO updatePatient(String id,
                                             PatientRequestDTO patientRequestDTO) {
-        getPatientById(id);
+
         Patient patient = patientRepository.findById(UUID.fromString(id))
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found with id: " + id));
+
+        if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
+            throw new EmailAlreadyExistsException("Patient with this email "+patientRequestDTO.getEmail() + " already exists");
+        }
+
         patient.setName(patientRequestDTO.getName());
         patient.setEmail(patientRequestDTO.getEmail());
         patient.setAddress(patientRequestDTO.getAddress());
         patient.setDateOfBirth(LocalDate.parse(patientRequestDTO.getDateOfBirth()));
+
         Patient updatedPatient = patientRepository.save(patient);
         return PatientMapper.toPatientResponseDTO(updatedPatient);
     }
