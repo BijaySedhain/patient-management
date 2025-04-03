@@ -14,8 +14,6 @@ public class DateValidator implements ConstraintValidator<ValidDate, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
 
-        // Null values are handled by @NotNull
-
         try {
             LocalDate.parse(s, FORMATTER);
             return true;
