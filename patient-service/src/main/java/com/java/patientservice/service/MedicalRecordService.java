@@ -29,7 +29,7 @@ public class MedicalRecordService {
 
         if (medicalRecords.isEmpty()) {
             log.warn("No medical records found");
-            return List.of();
+            throw new MedicalRecordNotFoundException("No medical records found");
         }
 
         log.info("Found {} medical records", medicalRecords.size());
